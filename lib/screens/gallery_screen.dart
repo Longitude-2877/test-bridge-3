@@ -55,7 +55,8 @@ class _GalleryScreenState extends State<GalleryScreen> {
       final file = await asset.originFile;
       if (file == null || !mounted) return;
       final deleted = await Navigator.of(context).push<bool>(
-        MaterialPageRoute(builder: (_) => _PhotoViewer(file: file)),
+        MaterialPageRoute(
+            builder: (_) => _PhotoViewer(asset: asset, file: file)),
       );
       if (deleted == true) _load();
     }
@@ -196,8 +197,9 @@ class _GalleryTileState extends State<_GalleryTile> {
 }
 
 class _PhotoViewer extends StatefulWidget {
+  final AssetEntity asset;
   final File file;
-  const _PhotoViewer({required this.file});
+  const _PhotoViewer({required this.asset, required this.file});
 
   @override
   State<_PhotoViewer> createState() => _PhotoViewerState();
@@ -229,7 +231,10 @@ class _PhotoViewerState extends State<_PhotoViewer> {
         ],
       ),
     );
-    if (ok == true) Navigator.of(context).pop(true);
+    if (ok == true) {
+      await PhotoManager.editor.deleteWithIds([widget.asset.id]);
+      if (mounted) Navigator.of(context).pop(true);
+    }
   }
 
   @override
@@ -315,7 +320,7 @@ class _VideoViewerState extends State<_VideoViewer> {
       ),
     );
     if (ok == true) {
-      await widget.asset.deleteEntity();
+      await PhotoManager.editor.deleteWithIds([widget.asset.id]);
       if (mounted) Navigator.of(context).pop(true);
     }
   }

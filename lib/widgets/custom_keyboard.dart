@@ -126,10 +126,7 @@ class _KeyboardSheetState extends State<_KeyboardSheet> {
         height: height,
         child: widget.numeric
             ? _buildNumeric()
-            : _buildAlpha(
-                onShift: () => setState(() => _shift = !_shift),
-                shift: _shift,
-              ),
+            : _buildAlpha(),
       ),
     );
   }
