@@ -20,7 +20,7 @@
     </queries>
 
     <application
-        android:label="Elder Launcher 2"
+        android:label="Elder Launcher 3"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"

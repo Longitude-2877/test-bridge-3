@@ -32,10 +32,10 @@ jobs:
         run: flutter build apk --release
 
       - name: Rename APK
-        run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/app-release-2.apk
+        run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/app-release-3.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release-2-apk
-          path: build/app/outputs/flutter-apk/app-release-2.apk
+          name: app-release-3-apk
+          path: build/app/outputs/flutter-apk/app-release-3.apk
