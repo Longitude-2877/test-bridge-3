@@ -79,6 +79,14 @@ class MainActivity : FlutterActivity() {
                             result.error("SAVE_FAILED", e.message ?: "Save failed", null)
                         }
                     }
+                    "openSettings" -> {
+                        try {
+                            startActivity(Intent(android.provider.Settings.ACTION_SETTINGS))
+                            result.success(null)
+                        } catch (e: Exception) {
+                            result.error("SETTINGS_FAILED", e.message ?: "Could not open settings", null)
+                        }
+                    }
                     "exitLauncher" -> {
                         finishAffinity()
                         result.success(null)

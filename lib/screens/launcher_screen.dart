@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../services/phone_services.dart';
 import '../theme/contra_theme.dart';
 
 class HomeApp {
@@ -58,6 +59,13 @@ class LauncherScreen extends StatelessWidget {
         name: 'Gallery',
         subtitle: 'View your photos & videos',
         onTap: () => onOpen(5),
+      ),
+      HomeApp(
+        icon: Icons.settings_rounded,
+        color: ContraTheme.ink,
+        name: 'Settings',
+        subtitle: 'Phone settings',
+        onTap: () => PhoneServices.openSettings(),
       ),
     ];
 

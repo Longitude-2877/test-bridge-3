@@ -45,4 +45,8 @@ class PhoneServices {
   static Future<void> exitLauncher() async {
     await _channel.invokeMethod<void>('exitLauncher');
   }
+
+  static Future<void> openSettings() async {
+    await _channel.invokeMethod<void>('openSettings');
+  }
 }
